@@ -1,11 +1,11 @@
-# protoMake.py
+########### protoMake.py
 # By David Humphries
 # v0.1-29.03.19
 #
 # Asks a series of questions via console prompt regarding prototype configuration. Generates a set of headers
 # based on responses in .xlsx & .dbf format.
 #
-# Todo:
+# Todo: 
 #  * Make all existing headers compliant with v5 prototype spec
 #  * Add support for additional items from v5 spec (motors, vsd, soft starters etc.)
 #  * Refactor to clean up excessive repeated code
@@ -21,9 +21,7 @@ from openpyxl.worksheet.table import Table, TableStyleInfo
 import dbf
 
 ########################################################################
-
-
-def question(queryString, answerType):
+def question(queryString,answerType):
     answer = input(queryString)
     if(answerType == "number"):
         if(answer.isdigit()):
@@ -33,7 +31,7 @@ def question(queryString, answerType):
             return int(answer)
         else:
             print("Please enter a valid number, or 'N' to skip.")
-            answer = question(queryString, answerType)
+            answer = question(queryString,answerType)
             return int(answer)
 
     elif(answerType == "boolean"):
@@ -45,7 +43,7 @@ def question(queryString, answerType):
             return answer
         else:
             print("Please enter a valid boolean. (y/n or 1/0)")
-            answer = question(queryString, answerType)
+            answer = question(queryString,answerType)
     else:
         return answer
 ########################################################################
@@ -53,87 +51,77 @@ def question(queryString, answerType):
 
 ########################################################################
 def protoMake():
-    # Prototype Name
+    #Prototype Name
     ####################################
-    prototype = question("Enter Protoype Name: ", "string")
+    prototype = question("Enter Protoype Name: ","string")
 
-    # Panel Setup
+    #Panel Setup
     ####################################
-    panels = question("Enter Number of Panels: ", "number")
+    panels = question("Enter Number of Panels: ","number")
     if(panels):
-        power24DC = []
-        power24AC = []
-        power230AC = []
-        xIO = []
-        xIOF = []
-        xIOK = []
-        xDB = []
-        xDBF = []
-        xDBK = []
+        power24DC =[]
+        power24AC =[]
+        power230AC =[]
+        xIO =[]
+        xIOF =[]
+        xIOK =[]
+        xDB =[]
+        xDBF =[]
+        xDBK =[]
         for n in range(panels):
-            power24DC.append(
-                question("Is there 24VDC power in Panel " + str(n+1) + "? (Y/N): ", "boolean"))
-            power24AC.append(
-                question("Is there 24VAC power in Panel " + str(n+1) + "? (Y/N): ", "boolean"))
-            power230AC.append(
-                question("How many 230VAC phases in Panel " + str(n+1) + "?: ", "number"))
+            power24DC.append(question("Is there 24VDC power in Panel " + str(n+1) + "? (Y/N): ","boolean"))
+            power24AC.append(question("Is there 24VAC power in Panel " + str(n+1) + "? (Y/N): ","boolean"))
+            power230AC.append(question("How many 230VAC phases in Panel " + str(n+1) + "?: ","number"))
 
-            xIO.append(question("Are there IO terminals in Panel " +
-                                str(n+1) + "? (Y/N): ", "boolean"))
+            xIO.append(question("Are there IO terminals in Panel " + str(n+1) + "? (Y/N): ","boolean"))
             if(xIO[n]):
-                xIOF.append(question("Are there IO fuses in Panel " +
-                                     str(n+1) + "? (Y/N): ", "boolean"))
-                xIOK.append(
-                    question("Are there IO relays in Panel " + str(n+1) + "? (Y/N): ", "boolean"))
+                xIOF.append(question("Are there IO fuses in Panel " + str(n+1) + "? (Y/N): ","boolean"))
+                xIOK.append(question("Are there IO relays in Panel " + str(n+1) + "? (Y/N): ","boolean"))
             else:
                 xIOF.append(0)
                 xIOK.append(0)
-            xDB.append(question(
-                "Are there distribution terminals in Panel " + str(n+1) + "? (Y/N): ", "boolean"))
+            xDB.append(question("Are there distribution terminals in Panel " + str(n+1) + "? (Y/N): ","boolean"))
             if(xDB[n]):
-                xDBF.append(question(
-                    "Are there distribution fuses or MCBs in Panel " + str(n+1) + "? (Y/N): ", "boolean"))
-                xDBK.append(question(
-                    "Are there distribution relays or contactors in Panel " + str(n+1) + "? (Y/N): ", "boolean"))
+                xDBF.append(question("Are there distribution fuses or MCBs in Panel " + str(n+1) + "? (Y/N): ","boolean"))
+                xDBK.append(question("Are there distribution relays or contactors in Panel " + str(n+1) + "? (Y/N): ","boolean"))
             else:
                 xDBF.append(0)
                 xDBK.append(0)
 
-    # PLC Setup
+    #PLC Setup
     ####################################
-    plcs = question("Enter Number of PLCs: ", "number")
+    plcs = question("Enter Number of PLCs: ","number")
     if(plcs):
-        plcT = []
+        plcT =[]
         for n in range(plcs):
-            plcT.append(
-                question("Enter Number of terminals for PLC " + str(n+1) + ": ", "number"))
+            plcT.append(question("Enter Number of terminals for PLC " + str(n+1) + ": ","number"))
         print(plcT)
 
-    # Device Setup
+    #Device Setup
     ####################################
-    devices = question("Enter Number of Devices: ", "number")
+    devices = question("Enter Number of Devices: ","number")
     if(devices):
-        deviceT = []
+        deviceT =[]
         for n in range(devices):
-            deviceT.append(
-                question("Enter Number of terminals for Device " + str(n+1) + ": ", "number"))
+            deviceT.append(question("Enter Number of terminals for Device " + str(n+1) + ": ","number"))
         print(plcT)
 
-    # Cable Setup
+    #Cable Setup
     ####################################
-    cables = question("Enter Number of Cables: ", "number")
+    cables = question("Enter Number of Cables: ","number")
     if(cables):
-        cores = []
+        cores =[]
         for n in range(cables):
-            cores.append(
-                question("Enter Number of cores for Cable " + str(n+1) + ": ", "number"))
+            cores.append(question("Enter Number of cores for Cable " + str(n+1) + ": ","number"))
         print(cores)
 
     #########################################################################
-    headers = ["DRAWING", "PROTOTYPE"]
+
+
+    headers = ["DRAWING","PROTOTYPE"]
 
     ####################################
-    # PANELS
+    #PANELS
     ####################################
     if(panels):
         for n in range(panels):
@@ -142,7 +130,7 @@ def protoMake():
             headers.append(prefix+"PDESC")
 
             ####################################
-            # POWER
+            #POWER
             ####################################
             if(power24DC[n]):
                 headers.append(prefix+"24DC")
@@ -155,7 +143,7 @@ def protoMake():
             if(power230AC[n]):
                 headers.append(prefix+"230ACN")
             ####################################
-            # IO
+            #IO
             ####################################
             if(xIO[n]):
                 headers.append(prefix+"XIO")
@@ -166,7 +154,7 @@ def protoMake():
                 headers.append(prefix+"XIO_KI")
 
             ####################################
-            # DISTRIBUTION
+            #DISTRIBUTION
             ####################################
             if(xDB[n]):
                 headers.append(prefix+"XDB")
@@ -177,7 +165,7 @@ def protoMake():
                 headers.append(prefix+"XDB_KI")
 
     ####################################
-    # PLCS
+    #PLCS
     ####################################
     if(plcs):
         for n in range(plcs):
@@ -197,7 +185,7 @@ def protoMake():
                 headers.append(prefix+"T"+str(m+1))
 
     ####################################
-    # DEVICES
+    #DEVICES
     ####################################
     if(devices):
         for n in range(devices):
@@ -212,7 +200,7 @@ def protoMake():
                 headers.append(prefix+"T"+str(m+1))
 
     ####################################
-    # CABLES
+    #CABLES
     ####################################
     if(cables):
         for n in range(cables):
@@ -225,7 +213,7 @@ def protoMake():
                 headers.append(prefix+"COR"+str(m+1))
 
     ####################################
-    # OUTPUT
+    #OUTPUT
     ####################################
     print("Generating " + prototype + ".xlsx")
 
@@ -233,10 +221,9 @@ def protoMake():
 
     ws = wb.active
     ws.append(headers)
-    tab = Table(displayName="Table1", ref="A1:" +
-                get_column_letter(ws.max_column)+"2")
+    tab = Table(displayName="Table1", ref="A1:"+get_column_letter(ws.max_column)+"2")
     style = TableStyleInfo(name="TableStyleMedium13", showFirstColumn=False,
-                           showLastColumn=False, showRowStripes=True, showColumnStripes=False)
+                            showLastColumn=False, showRowStripes=True, showColumnStripes=False)
     tab.tableStyleInfo = style
     ws.add_table(tab)
     wb.save(prototype + '.xlsx')
@@ -248,17 +235,17 @@ def protoMake():
     for item in headers:
         specs += item + " C(255); "
     dbfTable = dbf.Table(
-        filename=prototype,
-        field_specs=specs,
-    )
+            filename=prototype,
+            field_specs=specs,
+            )
     dbfTable.open(mode=dbf.READ_WRITE)
+
 
     print(headers)
     ########################################################################
-    # REPEAT
+    #REPEAT
     ####################################
-    if(question("Would you like to make another Prototype? (Y/N): ", "boolean")):
+    if(question("Would you like to make another Prototype? (Y/N): ","boolean")):
         protoMake()
-
 
 protoMake()

@@ -1,0 +1,377 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+Try the new cross-platform PowerShell https://aka.ms/pscore6
+
+PS C:\Users\dahum\Code\python\autoProto> python .\protoMake.py
+Traceback (most recent call last):
+  File ".\protoMake.py", line 18, in <module>
+    from openpyxl import Workbook
+ModuleNotFoundError: No module named 'openpyxl'
+PS C:\Users\dahum\Code\python\autoProto> pip install openpyxl
+Collecting openpyxl
+  Downloading https://files.pythonhosted.org/packages/95/8c/83563c60489-3.0.3.tar.gz (172kB)
+     |████████████████████████████████| 174kB 595kB/s 
+Collecting jdcal (from openpyxl)
+  Using cached https://files.pythonhosted.org/packages/f0/da/572cbc0bc5.4.1-py2.py3-none-any.whl
+Collecting et_xmlfile (from openpyxl)
+ile-1.0.1.tar.gz
+Installing collected packages: jdcal, et-xmlfile, openpyxl
+  Running setup.py install for et-xmlfile ... done
+  Running setup.py install for openpyxl ... done
+WARNING: You are using pip version 19.2.3, however version 20.0.2 is av
+You should consider upgrading via the 'python -m pip install --upgrade 
+PS C:\Users\dahum\Code\python\autoProto> python .\protoMake.py
+Traceback (most recent call last):
+  File ".\protoMake.py", line 21, in <module>
+    import dbf
+ModuleNotFoundError: No module named 'dbf'
+PS C:\Users\dahum\Code\python\autoProto> pip install dbf
+Collecting dbf
+  Downloading https://files.pythonhosted.org/packages/fa/2b/71b29fe6454.3-py3-none-any.whl (69kB)
+     |████████████████████████████████| 71kB 573kB/s 
+  Downloading https://files.pythonhosted.org/packages/14/5f/320aa3eb6872.3-py3-none-any.whl (40kB)
+     |████████████████████████████████| 40kB 1.3MB/s 
+Installing collected packages: aenum, dbf
+Successfully installed aenum-2.2.3 dbf-0.98.3
+WARNING: You are using pip version 19.2.3, however version 20.0.2 is av
+You should consider upgrading via the 'python -m pip install --upgrade 
+PS C:\Users\dahum\Code\python\autoProto> python .\protoMake.py
+Enter Protoype Name: blah
+Enter Number of Panels: 2
+Is there 24VDC power in Panel 1? (Y/N): 0
+Is there 24VAC power in Panel 1? (Y/N): 0
+How many 230VAC phases in Panel 1?: 0
+Are there IO terminals in Panel 1? (Y/N): 0
+Are there distribution terminals in Panel 1? (Y/N): 0
+Is there 24VDC power in Panel 2? (Y/N): 1
+Is there 24VAC power in Panel 2? (Y/N): 0
+How many 230VAC phases in Panel 2?: 0
+Are there IO terminals in Panel 2? (Y/N): 0
+Are there distribution terminals in Panel 2? (Y/N): 0
+Enter Number of PLCs: 1
+Enter Number of terminals for PLC 1: 1
+[1]
+Enter Number of Devices: 2
+Enter Number of terminals for Device 1: 1
+Enter Number of terminals for Device 2: 1
+[1]
+Enter Number of Cables: 1
+Enter Number of cores for Cable 1: 1
+DESC2', 'D1_DESC3', 'D1_DESC4', 'D1_VDESC', 'D1_TYPE', 'D1_T1', 'D2_TAG', 'D2_DESC2', 'D2_DESC3', 'D2_DESC4', 'D2_VDESC', 'D2_TYPE', 'D2_T1', 'C1_MFG', 'C1_CATN', 'C1_CATD', 'C1_TAG', 'C1_'X2_PNL', 'X2_PDESC', 'XCOR1']                                         'P1_DESC2', 'P1_DESC3', 
+Would you like to make another Prototype? (Y/N)G', 'D2_DESC2', 'D2_DESC: n                                      python .\protoMake.pyum\Code\python\autoProto>       : n
+Enter Protoype Name: ALM_HORN
+Enter Number of Panels: 1
+Is there 24VDC power in Panel 1? (Y/N): 1
+Is there 24VAC power in Panel 1? (Y/N): 0
+How many 230VAC phases in Panel 1?: 0
+Are there IO terminals in Panel 1? (Y/N): 1
+Are there IO fuses in Panel 1? (Y/N): 0
+Are there IO relays in Panel 1? (Y/N): 0
+Are there distribution terminals in Panel 1? (Y/N): 1
+Are there distribution fuses or MCBs in Panel 1? (Y/N): 0
+Are there distribution relays or contactors in 
+Panel 1? (Y/N): 0
+Enter Number of PLCs: 1
+Enter Number of terminals for PLC 1: 2
+[2]
+Enter Number of Devices: 1
+Enter Number of terminals for Device 1: 2
+[2]
+Enter Number of Cables: 1
+Enter Number of cores for Cable 1: 2
+[2]
+Generating ALM_HORN.xlsx
+Generating ALM_HORN.dbf
+['DRAWING', 'PROTOTYPE', 'X1_PNL', 'X1_PDESC', 
+'X1_24DC', 'X1_0DC', 'X1_XIO', 'X1_XIO_TI', 'X1_XDB', 'X1_XDB_TI', 'P1_NAME', 'P1_RACK', 'P1_SLOT', 'P1_CHAN', 'P1_MFG', 'P1_CATN', 'P1_CATD', 'P1_TAG', 'P1_DESC2', 'P1_DESC3', 'P1_DESC4', 'P1_T1', 'P1_T2', 'D1_TAG', 'D1_DESC2', 'D1_DESC3', 'D1_DESC4', 'D1_VDESC', 'D1_TYPE', 'D1_T1', 'D1_T2', 'C1_MFG', 'C1_CATN', 'C1_CATD', 'C1_TAG', 'C1_COR1', 'C1_COR2']
+Would you like to make another Prototype? (Y/N): N
+PS C:\Users\dahum\Code\python\autoProto> python .\fromExcel.py
+C:\Users\dahum\AppData\Local\Programs\Python\Python38-32\lib\site-packages\openpyxl\worksheet\_reader.py:300: UserWarning: Unknown extension is not supported and will be removed
+  warn(msg)
+Traceback (most recent call last):
+  File ".\fromExcel.py", line 4, in <module>
+    my_range = wb.defined_names['setupProtoype']
+  File "C:\Users\dahum\AppData\Local\Programs\Python\Python38-32\lib\site-packages\openpyxl\workbook\defined_name.py", line 231, 
+    raise KeyError("No definition called {0}".format(name))
+KeyError: 'No definition called setupProtoype'
+PS C:\Users\dahum\Code\python\autoProto> python .\fromExcel.py
+C:\Users\dahum\AppData\Local\Programs\Python\Python38-32\lib\site-packages\openpyxl\worksheet\_reader.py:300: UserWarning: Unknow  warn(msg)
+Traceback (most recent call last):
+  File ".\fromExcel.py", line 4, in <module>
+    my_range = wb.defined_names['setupProtoype']
+  File "C:\Users\dahum\AppData\Local\Programs\Python\Python38-32\lib\site-packages\openpyxl\workbook\defined_name.py", line 231, 
+in __getitem__
+    raise KeyError("No definition called {0}".format(name))
+PS C:\Users\dahum\Code\python\autoProto> python .\fromExcel.py
+C:\Users\dahum\AppData\Local\Programs\Python\Python38-32\lib\site-packages\openpyxl\worksheet\_reader.py:300: UserWarning: Unknown extension is not supported and will be removed
+PS C:\Users\dahum\Code\python\autoProto> python .\fromExcel.py
+C:\Users\dahum\AppData\Local\Programs\Python\Python38-32\lib\site-packages\openpyxl\worksheet\_reader.py:300: UserWarning: Unknown extension is not supported and will be removed
+PS C:\Users\dahum\Code\python\autoProto> python .\fromExcel.py
+C:\Users\dahum\AppData\Local\Programs\Python\Python38-32\lib\site-packages\openpyxl\worksheet\_reader.py:300: UserWarning: Unknown extension is not supported and will be removed
+  warn(msg)
+  File ".\fromExcel.py", line 3
+    wb = load_workbook(filename='IO_INSTRUMENT_LIST.xlsx', data_only=**'True'**)
+                                                                     ^
+SyntaxError: invalid syntax
+PS C:\Users\dahum\Code\python\autoProto> python .\fromExcel.py
+C:\Users\dahum\AppData\Local\Programs\Python\Python38-32\lib\site-packages\openpyxl\worksheet\_reader.py:300: UserWarning: Unknown extension is not supported and will be removed
+  warn(msg)
+PS C:\Users\dahum\Code\python\autoProto> python .\fromExcel.py
+C:\Users\dahum\AppData\Local\Programs\Python\Python38-32\lib\site-packages\openpyxl\worksheet\_reader.py:300: UserWarning: Unknown extension is not supported and will be removed
+  warn(msg)
+<openpyxl.workbook.workbook.Workbook object at 0x03C31280>
+PS C:\Users\dahum\Code\python\autoProto> python .\fromExcel.py
+C:\Users\dahum\AppData\Local\Programs\Python\Python38-32\lib\site-packages\openpyxl\worksheet\_reader.py:300: UserWarning: Unknown extension is not supported and will be removed
+  warn(msg)
+<openpyxl.workbook.defined_name.DefinedNameList object>
+Parameters:
+definedName=[<openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='_1BK', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text="'[1]#REF'!$C$10:$L$38", <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='_1EQ', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text="'[1]#REF'!$C$41:$L$63", <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='_1meq', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='#REF!', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='_1PL', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text="'[1]#REF'!$C$65:$L$90", <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='_REV1', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 161"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='_REV2', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 173"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='_REV3', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 167"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='_REV4', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 179"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='APPROUVE1', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 166"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='APPROUVE2', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 178"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='APPROUVE3', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 172"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='APPROUVE4', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 184"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='AUTRE_REF', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 152"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='CLIENT1', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 153"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='CLIENT2', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 154"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='clientname', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='[2]Titles!$B$4', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='_xlnm.Criteria', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='#REF!', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='_xlnm.Database', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='#REF!', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='DATE1', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 162"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='DATE2', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 174"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='DATE3', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 168"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='DATE4', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 180"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='description', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='[2]Titles!$B$5', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='DESIGNATION1', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, 
+function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, 
+attr_text='"Texte 163"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='DESIGNATION2', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, 
+function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, 
+attr_text='"Texte 175"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='DESIGNATION3', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, 
+function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, 
+attr_text='"Texte 169"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='DESIGNATION4', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, 
+function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, 
+attr_text='"Texte 181"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='ERECT', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='[2]Titles!$B$14', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='ETABLI1', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 164"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='ETABLI2', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 176"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='ETABLI3', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 170"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='ETABLI4', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 182"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='FNDNS', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='[2]Systems!$AH$38', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='I', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 149"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='ITEM', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 185"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='LIEU1', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 157"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='LIEU2', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 158"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='NoPlan', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 148"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='PAGE', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 150"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='project', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='[2]Titles!$B$6', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='REF_CLIENT1', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 155"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='REF_CLIENT2', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 156"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='Révision', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='#REF!', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='SERVICE', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 151"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='Slicer_Device', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='#N/A', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='Slicer_Typical', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='#N/A', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='Slicer_Typical1', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='#N/A', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='title', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='[2]Titles!$B$8', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='UNITE1', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 159"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='UNITE2', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 160"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='VERIFIE1', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 165"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='VERIFIE2', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 177"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='VERIFIE3', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, funcPS C:\Users\dahum\Code\python\autoProto> python .\fromExcel.py
+C:\Users\dahum\AppData\Local\Programs\Python\Python38-32\lib\site-packages\openpyxl\worksheet\_reader.py:300: UserWarning: Unknown extension is not supported and will be removed
+  warn(msg)
+Traceback (most recent call last):
+  File ".\fromExcel.py", line 8, in <module>
+    print(wb.defined_names['setupPrototype'])
+  File "C:\Users\dahum\AppData\Local\Programs\Python\Python38-32\lib\site-packages\openpyxl\workbook\defined_name.py", line 231, 
+in __getitem__
+    raise KeyError("No definition called {0}".format(name))
+KeyError: 'No definition called setupPrototype'
+PS C:\Users\dahum\Code\python\autoProto> python .\fromExcel.py
+C:\Users\dahum\AppData\Local\Programs\Python\Python38-32\lib\site-packages\openpyxl\worksheet\_reader.py:300: UserWarning: Unknown extension is not supported and will be removed
+  warn(msg)
+<openpyxl.workbook.defined_name.DefinedNameList object>
+Parameters:
+definedName=[<openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='_1BK', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text="'[1]#REF'!$C$10:$L$38", <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='_1EQ', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text="'[1]#REF'!$C$41:$L$63", <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='_1meq', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='#REF!', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='_1PL', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text="'[1]#REF'!$C$65:$L$90", <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='_REV1', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 161"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='_REV2', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 173"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='_REV3', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 167"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='_REV4', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 179"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='APPROUVE1', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 166"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='APPROUVE2', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 178"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='APPROUVE3', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 172"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='APPROUVE4', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 184"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='AUTRE_REF', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 152"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='CLIENT1', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 153"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='CLIENT2', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 154"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='clientname', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='[2]Titles!$B$4', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='_xlnm.Criteria', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='#REF!', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='_xlnm.Database', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='#REF!', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='DATE1', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 162"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='DATE2', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 174"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='DATE3', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 168"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='DATE4', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 180"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='description', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='[2]Titles!$B$5', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='DESIGNATION1', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, 
+function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, 
+attr_text='"Texte 163"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='DESIGNATION2', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, 
+function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, 
+attr_text='"Texte 175"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='DESIGNATION3', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, 
+function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, 
+attr_text='"Texte 169"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='DESIGNATION4', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, 
+function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, 
+attr_text='"Texte 181"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='ERECT', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='[2]Titles!$B$14', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='ETABLI1', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 164"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='ETABLI2', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 176"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='ETABLI3', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 170"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='ETABLI4', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 182"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='FNDNS', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='[2]Systems!$AH$38', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='I', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 149"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='ITEM', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 185"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='LIEU1', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 157"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='LIEU2', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 158"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='NoPlan', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 148"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='PAGE', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 150"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='project', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='[2]Titles!$B$6', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='REF_CLIENT1', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 155"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='REF_CLIENT2', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 156"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='Révision', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='#REF!', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='SERVICE', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 151"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='Slicer_Device', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='#N/A', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='Slicer_Typical', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='#N/A', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='Slicer_Typical1', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='#N/A', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='title', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='[2]Titles!$B$8', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='UNITE1', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 159"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='UNITE2', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 160"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='VERIFIE1', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 165"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='VERIFIE2', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 177"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='VERIFIE3', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 171"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='VERIFIE4', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='"Texte 183"', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='wrn.Print._.Output.', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=True, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='{#N/A,#N/A,FALSE,"OUTPUT SHEET "}', <openpyxl.workbook.defined_name.DefinedName object>
+Parameters:
+name='YIELD', comment=None, customMenu=None, description=None, help=None, statusBar=None, localSheetId=None, hidden=None, function=None, vbProcedure=None, xlm=None, functionGroupId=None, shortcutKey=None, publishToServer=None, workbookParameter=None, attr_text='#REF!']
