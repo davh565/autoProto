@@ -29,6 +29,7 @@ def getData(fileName, sheetName):
         'variables': []
 
     }
+    # subFunction definintions -------------------------------------------------
 
     def getFieldNames():
         for rowIndex in range(3, 12):
@@ -68,7 +69,7 @@ def getData(fileName, sheetName):
                     rows.append(None)
             data['variables'].append(rows)
         print('Got Variables')
-
+    # --------------------------------------------------------------------------
     getFieldNames()
     getProtoNames()
     getEntries()
@@ -84,36 +85,38 @@ def createDBF(data):
     print('Generating * .dbfs')
     print('')
 
-    for protoName in data['protoNames']:
-        protoIndex = data['protoNames'].index(protoName)
-        fieldsStr = ''
-        for fieldName in data['fieldNames']:
-            fieldIndex = data['fieldNames'].index(fieldName)
-            if data['entries'][protoIndex][fieldIndex] != None:
-                fieldsStr += fieldName + ' C(16); '
-
+    # subFunction definintions -------------------------------------------------
+    def createTable(protoName, protoIndex, fieldStr):
         if fieldsStr != '':
-            print(protoName+'.dbf')
             dbfTable = dbf.Table(filename=protoName +
                                  '.dbf', field_specs=fieldsStr,)
             dbfTable.open(mode=dbf.READ_WRITE)
             entries = tuple([str(e) for e in data['entries']
                              [protoIndex] if e != None])
-            # print(entries)
             dbfTable.append(entries)
-            # print(test)
-            # for datum in (
-            #     ('John Doe', 31, dbf.Date(1979, 9, 13)),
-            #     ('Ethan Furman', 102, dbf.Date(1909, 4, 1)),
-            #     ('Jane Smith', 57, dbf.Date(1954, 7, 2)),
-            #     ('John Adams', 44, dbf.Date(1967, 1, 9)),
-            # ):
-            #     dbfTable.append(datum)
+            print(protoName+'.dbf created successfully')
+        else:
+            print(protoName + " is empty, no file created")
 
-            # for datum in data['entries']:
+    def createFieldsStr(protoIndex):
+        output = ''
+        for fieldName in data['fieldNames']:
+            fieldIndex = data['fieldNames'].index(fieldName)
+            if data['entries'][protoIndex][fieldIndex] != None:
+                output += fieldName + ' C(16); '
+        return output
+
+    # --------------------------------------------------------------------------
+    for protoName in data['protoNames']:
+        protoIndex = data['protoNames'].index(protoName)
+        fieldsStr = createFieldsStr(protoIndex)
+        createTable(protoName, protoIndex, fieldsStr)
+
     print('')
-    print('DBFs generated')
+    print('DBFs created')
     print(divider)
+
+# Helper Functions -------------------------------------------------------------
 
 
 def iterable(obj):
@@ -125,4 +128,6 @@ def iterable(obj):
         return True
 
 
+# ------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 main(file, sheet)
