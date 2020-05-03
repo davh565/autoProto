@@ -2,6 +2,7 @@ from openpyxl import load_workbook
 from openpyxl import utils
 import dbf
 
+testRange = 6
 file = 'IO_INSTRUMENT_LIST.xlsx'
 sheet = 'DEFAULTS'
 divider = '____________________________________________________________________'
@@ -9,6 +10,8 @@ divider = '____________________________________________________________________'
 
 def main(fileName, sheetName):
     data = getData(fileName, sheetName)
+    # print(data['protoNames'])
+    # print(data['fieldNames'])
     createDBF(data)
 
 
@@ -32,48 +35,48 @@ def getData(fileName, sheetName):
     # subFunction definintions -------------------------------------------------
 
     def getFieldNames():
-        for rowIndex in range(3, 12):
+        for rowIndex in range(3, ws.max_row+1):
             cell = ws['A'+str(rowIndex)]
             if cell.value != None:
                 data['fieldNames'].append(cell.value)
         print('Got FieldNames')
 
     def getProtoNames():
-        for colIndex in range(2, 12):
+        for colIndex in range(2, ws.max_column+1):
             cell = ws[utils.get_column_letter(colIndex)+'2']
             if cell.value != None:
                 data['protoNames'].append(cell.value)
         print('Got ProtoNames')
 
     def getEntries():
-        for colIndex in range(2, 12):
+        for colIndex in range(2, ws.max_column+1):
             rows = []
-            for rowIndex in range(3, 12):
+            for rowIndex in range(3, ws.max_row+1):
                 cell = ws[utils.get_column_letter(colIndex)+str(rowIndex)]
                 rows.append(cell.value)
             data['entries'].append(tuple(rows))
         data['entries'] = tuple(data['entries'])
         print('Got Entries')
 
-    def getVariables():
-        for colIndex in range(2, 12):
-            rows = []
-            for rowIndex in range(3, 12):
-                cell = ws[utils.get_column_letter(colIndex)+str(rowIndex)]
-                if iterable(cell.value):
-                    if '##' in cell.value:
-                        rows.append(str(cell.value))
-                    else:
-                        rows.append(None)
-                else:
-                    rows.append(None)
-            data['variables'].append(rows)
-        print('Got Variables')
+    # def getVariables():
+    #     for colIndex in range(2, testRange):
+    #         rows = []
+    #         for rowIndex in range(3, testRange):
+    #             cell = ws[utils.get_column_letter(colIndex)+str(rowIndex)]
+    #             if iterable(cell.value):
+    #                 if '##' in cell.value:
+    #                     rows.append(str(cell.value))
+    #                 else:
+    #                     rows.append(None)
+    #             else:
+    #                 rows.append(None)
+    #         data['variables'].append(rows)
+    #     print('Got Variables')
     # --------------------------------------------------------------------------
     getFieldNames()
     getProtoNames()
     getEntries()
-    getVariables()
+    # getVariables()
     print('')
     print('Got All Data')
     print(divider)
