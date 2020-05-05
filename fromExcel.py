@@ -96,7 +96,6 @@ def createDBF(data):
             dbfTable.open(mode=dbf.READ_WRITE)
             entries = tuple([str(e) for e in data['entries']
                              [protoIndex] if e != None])
-            print(entries)
             dbfTable.append(entries)
             print(protoName+'.dbf created successfully')
         else:
