@@ -4,54 +4,51 @@ import dbf
 
 testRange = 6
 file = 'IO_INSTRUMENT_LIST.xlsx'
-sheetPrototypes = 'DEFAULTS'
-sheetTags = 'TAG_REF'
-tagKey = 'TAGNAME'
+sheet = 'PROTOTYPES'
 divider = '____________________________________________________________________'
 
 
-def main(fileName):
-    data = getData(fileName)
+def main(fileName, sheetName):
+    data = getData(fileName, sheetName)
+    # print(data['protoNames'])
+    # print(data['fieldNames'])
     createDBF(data)
 
 
-def getData(fileName):
+def getData(fileName, sheetName):
     print(divider)
     print('Getting data from sheet')
 
     wb = load_workbook(filename=file, read_only=False,
                        keep_vba=False, data_only=True, keep_links=False)
-    ws = wb[sheetPrototypes]
-    ws2 = wb[sheetTags]
+    ws = wb[sheetName]
 
     data = {
         'file': fileName,
-        'sheet': sheetPrototypes,
+        'sheet': sheetName,
         'protoNames': [],
         'fieldNames': [],
         'entries': [],
-        'variables': [],
-        'tags': {},
-        'refColumns':[],
+        'variables': []
 
     }
     # subFunction definintions -------------------------------------------------
 
-    def populateFieldNames():
+    def getFieldNames():
         for rowIndex in range(3, ws.max_row+1):
             cell = ws['A'+str(rowIndex)]
             if cell.value != None:
                 data['fieldNames'].append(cell.value)
         print('Got FieldNames')
 
-    def populateProtoNames():
+    def getProtoNames():
         for colIndex in range(2, ws.max_column+1):
             cell = ws[utils.get_column_letter(colIndex)+'2']
             if cell.value != None:
                 data['protoNames'].append(cell.value)
         print('Got ProtoNames')
 
-    def populateEntries():
+    def getEntries():
         for colIndex in range(2, ws.max_column+1):
             rows = []
             for rowIndex in range(3, ws.max_row+1):
@@ -60,79 +57,26 @@ def getData(fileName):
             data['entries'].append(tuple(rows))
         data['entries'] = tuple(data['entries'])
         print('Got Entries')
-        
-    def updateVariableEntries(index):
-        data['entries']=[]
-        for colIndex in range(2, ws.max_column+1):
-            rows = []
-            for rowIndex in range(3, ws.max_row+1):
-                cell = ws[utils.get_column_letter(colIndex)+str(rowIndex)]
-                if iterable(cell.value):
-                    if '##' in cell.value:
-                        if getTagData(index,extractVariable(cell.value)) != None:
-                            rows.append(getTagData(index,extractVariable(cell.value)))
-                        else:
-                            rows.append(cell.value)
-                        # rows.append(getTagData(0,refColumn))
-                    else:
-                        rows.append(cell.value)
-                        
-                else:
-                    rows.append(cell.value)
-            data['entries'].append(tuple(rows))
-        data['entries'] = tuple(data['entries'])
-        print('Added variables to Entries')
 
-    # def populateVariables():
-    #     for colIndex in range(2, ws.max_column+1):
+    # def getVariables():
+    #     for colIndex in range(2, testRange):
     #         rows = []
-    #         for rowIndex in range(3, ws.max_row+1):
+    #         for rowIndex in range(3, testRange):
     #             cell = ws[utils.get_column_letter(colIndex)+str(rowIndex)]
     #             if iterable(cell.value):
     #                 if '##' in cell.value:
-    #                     rows.append(str(ctVariable(cextraell.value)))
+    #                     rows.append(str(cell.value))
+    #                 else:
+    #                     rows.append(None)
+    #             else:
+    #                 rows.append(None)
     #         data['variables'].append(rows)
     #     print('Got Variables')
-
-    def populateTags():
-        for protoName in data['protoNames']:
-            
-            data['tags'][protoName] = []
-            for rowIndex in range(3,19):
-                tagName = ws2['B'+str(rowIndex)].value
-                if protoName is ws2['D'+str(rowIndex)].value:
-                    data['tags'][protoName].append(tagName)
-                    
-    def populateRefColumns():
-        for columnIndex in range(2, ws.max_column+1):
-            cell = ws2[utils.get_column_letter(columnIndex)+'2']
-            if cell.value != None:
-                data['refColumns'].append(cell.value)
-    
-    def extractVariable(inputString):
-        x = inputString
-        return x[x.find('##')+2 : inputString.rfind('##')]
-        
-    def getTagData(index, refColumn):
-        if index < 3: index = 3
-        if refColumn in data['refColumns']:
-            columnLetter = utils.get_column_letter(data['refColumns'].index(refColumn)+2)
-            cell = ws2[columnLetter+str(index)]
-            return cell.value
-        
     # --------------------------------------------------------------------------
-    populateFieldNames()
-    populateProtoNames()
-    populateEntries()
-
-    populateTags()
-    populateRefColumns()
-    
-    updateVariableEntries(0)
-    # addTagData(tagData)
-    # addVariables()
-
-    # populateVariables()
+    getFieldNames()
+    getProtoNames()
+    getEntries()
+    # getVariables()
     print('')
     print('Got All Data')
     print(divider)
@@ -189,4 +133,4 @@ def iterable(obj):
 
 # ------------------------------------------------------------------------------
 # ------------------------------------------------------------------------------
-main(file)
+main(file, sheet)
