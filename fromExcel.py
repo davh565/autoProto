@@ -4,28 +4,31 @@ import dbf
 
 testRange = 6
 file = 'IO_INSTRUMENT_LIST.xlsx'
-sheet = 'DEFAULTS'
+sheetPrototypes = 'DEFAULTS'
+sheetTags = 'TAG_REF'
+tagKey = 'TAGNAME'
 divider = '____________________________________________________________________'
 
 
-def main(fileName, sheetName):
-    data = getData(fileName, sheetName)
+def main(fileName):
+    data = getData(fileName)
     # print(data['protoNames'])
-    # print(data['fieldNames'])
+    # print(data['variables'])
     createDBF(data)
 
 
-def getData(fileName, sheetName):
+def getData(fileName):
     print(divider)
     print('Getting data from sheet')
 
     wb = load_workbook(filename=file, read_only=False,
                        keep_vba=False, data_only=True, keep_links=False)
-    ws = wb[sheetName]
+    ws = wb[sheetPrototypes]
+    ws2 = wb[sheetTags]
 
     data = {
         'file': fileName,
-        'sheet': sheetName,
+        'sheet': sheetPrototypes,
         'protoNames': [],
         'fieldNames': [],
         'entries': [],
@@ -58,25 +61,36 @@ def getData(fileName, sheetName):
         data['entries'] = tuple(data['entries'])
         print('Got Entries')
 
-    # def getVariables():
-    #     for colIndex in range(2, testRange):
-    #         rows = []
-    #         for rowIndex in range(3, testRange):
-    #             cell = ws[utils.get_column_letter(colIndex)+str(rowIndex)]
-    #             if iterable(cell.value):
-    #                 if '##' in cell.value:
-    #                     rows.append(str(cell.value))
-    #                 else:
-    #                     rows.append(None)
-    #             else:
-    #                 rows.append(None)
-    #         data['variables'].append(rows)
-    #     print('Got Variables')
+    def getVariables():
+        for colIndex in range(2, ws.max_column+1):
+            rows = []
+            for rowIndex in range(3, ws.max_row+1):
+                cell = ws[utils.get_column_letter(colIndex)+str(rowIndex)]
+                if iterable(cell.value):
+                    if '##' in cell.value:
+                        rows.append(str(cell.value))
+                    else:
+                        rows.append(None)
+                else:
+                    rows.append(None)
+            data['variables'].append(rows)
+        print('Got Variables')
+
+    def getTags():
+        for protoName in data['protoNames']:
+            print(protoName)
+            pass
+
     # --------------------------------------------------------------------------
     getFieldNames()
     getProtoNames()
     getEntries()
-    # getVariables()
+
+    getTags()
+    # getTagData(tagName,field)
+    # addTagData(tagData)
+
+    getVariables()
     print('')
     print('Got All Data')
     print(divider)
@@ -133,4 +147,4 @@ def iterable(obj):
 
 # ------------------------------------------------------------------------------
 # ------------------------------------------------------------------------------
-main(file, sheet)
+main(file)
