@@ -9,6 +9,11 @@ sheetTags = 'TAG_REF'
 tagKey = 'TAGNAME'
 divider = '____________________________________________________________________'
 
+wb = load_workbook(filename=file, read_only=False,
+                   keep_vba=False, data_only=True, keep_links=False)
+ws = wb[sheetPrototypes]
+ws2 = wb[sheetTags]
+
 
 def main(fileName):
     data = getData(fileName)
@@ -19,11 +24,6 @@ def getData(fileName):
     print(divider)
     print('Getting data from sheet')
 
-    wb = load_workbook(filename=file, read_only=False,
-                       keep_vba=False, data_only=True, keep_links=False)
-    ws = wb[sheetPrototypes]
-    ws2 = wb[sheetTags]
-
     data = {
         'file': fileName,
         'sheet': sheetPrototypes,
@@ -32,7 +32,7 @@ def getData(fileName):
         'entries': [],
         'variables': [],
         'tags': {},
-        'refColumns':[],
+        'refColumns': [],
 
     }
     # subFunction definintions -------------------------------------------------
@@ -60,28 +60,6 @@ def getData(fileName):
             data['entries'].append(tuple(rows))
         data['entries'] = tuple(data['entries'])
         print('Got Entries')
-        
-    def updateVariableEntries(index):
-        data['entries']=[]
-        for colIndex in range(2, ws.max_column+1):
-            rows = []
-            for rowIndex in range(3, ws.max_row+1):
-                cell = ws[utils.get_column_letter(colIndex)+str(rowIndex)]
-                if iterable(cell.value):
-                    if '##' in cell.value:
-                        if getTagData(index,extractVariable(cell.value)) != None:
-                            rows.append(getTagData(index,extractVariable(cell.value)))
-                        else:
-                            rows.append(cell.value)
-                        # rows.append(getTagData(0,refColumn))
-                    else:
-                        rows.append(cell.value)
-                        
-                else:
-                    rows.append(cell.value)
-            data['entries'].append(tuple(rows))
-        data['entries'] = tuple(data['entries'])
-        print('Added variables to Entries')
 
     # def populateVariables():
     #     for colIndex in range(2, ws.max_column+1):
@@ -96,30 +74,19 @@ def getData(fileName):
 
     def populateTags():
         for protoName in data['protoNames']:
-            
+
             data['tags'][protoName] = []
-            for rowIndex in range(3,19):
+            for rowIndex in range(3, 19):
                 tagName = ws2['B'+str(rowIndex)].value
                 if protoName is ws2['D'+str(rowIndex)].value:
                     data['tags'][protoName].append(tagName)
-                    
+
     def populateRefColumns():
         for columnIndex in range(2, ws.max_column+1):
             cell = ws2[utils.get_column_letter(columnIndex)+'2']
             if cell.value != None:
                 data['refColumns'].append(cell.value)
-    
-    def extractVariable(inputString):
-        x = inputString
-        return x[x.find('##')+2 : inputString.rfind('##')]
-        
-    def getTagData(index, refColumn):
-        if index < 3: index = 3
-        if refColumn in data['refColumns']:
-            columnLetter = utils.get_column_letter(data['refColumns'].index(refColumn)+2)
-            cell = ws2[columnLetter+str(index)]
-            return cell.value
-        
+
     # --------------------------------------------------------------------------
     populateFieldNames()
     populateProtoNames()
@@ -127,8 +94,8 @@ def getData(fileName):
 
     populateTags()
     populateRefColumns()
-    
-    updateVariableEntries(0)
+
+    # updateVariableEntries(0)
     # addTagData(tagData)
     # addVariables()
 
@@ -137,6 +104,41 @@ def getData(fileName):
     print('Got All Data')
     print(divider)
     return data
+
+
+def updateVariableEntries(data, index):
+    # print(index)
+
+    def getTagData(index, refColumn):
+        index += 3
+        if refColumn in data['refColumns']:
+            columnLetter = utils.get_column_letter(
+                data['refColumns'].index(refColumn)+2)
+            cell = ws2[columnLetter+str(index)]
+            return cell.value
+
+    data['entries'] = []
+    for colIndex in range(2, ws.max_column+1):
+        rows = []
+        for rowIndex in range(3, ws.max_row+1):
+            cell = ws[utils.get_column_letter(colIndex)+str(rowIndex)]
+            if iterable(cell.value):
+                if '##' in cell.value:
+                    variable = extractVariable(cell.value)
+                    tagDatum = getTagData(index, variable)
+                    if tagDatum != None:
+                        rows.append(tagDatum)
+                        print('Added '+tagDatum)
+                    else:
+                        rows.append(cell.value)
+                    # rows.append(getTagData(0,refColumn))
+                else:
+                    rows.append(cell.value)
+
+            else:
+                rows.append(cell.value)
+        data['entries'].append(tuple(rows))
+    data['entries'] = tuple(data['entries'])
 
 
 def createDBF(data):
@@ -150,9 +152,16 @@ def createDBF(data):
             dbfTable = dbf.Table(filename=protoName +
                                  '.dbf', field_specs=fieldsStr,)
             dbfTable.open(mode=dbf.READ_WRITE)
-            entries = tuple([str(e) for e in data['entries']
-                             [protoIndex] if e != None])
-            dbfTable.append(entries)
+            # for
+            tableRow = tuple([str(e) for e in data['entries']
+                              [protoIndex] if e != None])
+            # dbfTable.append(tableRow)
+            for index, tag in enumerate(data['tags'][protoName]):
+                # print(index, tag)
+                updateVariableEntries(data, index)
+                dbfTable.append(tableRow)
+                # print(index, tag)
+                # print(data['entries'])
             print(protoName+'.dbf created successfully')
         else:
             print(protoName + " is empty, no file created")
@@ -185,6 +194,11 @@ def iterable(obj):
         return False
     else:
         return True
+
+
+def extractVariable(inputString):
+    x = inputString
+    return x[x.find('##')+2: inputString.rfind('##')]
 
 
 # ------------------------------------------------------------------------------
