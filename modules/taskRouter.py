@@ -1,1 +1,6 @@
-hello = 'hi'
+def setInputSource():
+    pass
+
+
+def setInputSource():
+    pass
