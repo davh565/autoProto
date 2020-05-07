@@ -1,0 +1,9 @@
+Root directory contains main .py file and config.py file. All other pythonfiles
+located in /input/, /output/ or /modules/ directories.
+
+Input handlers to be of format fromHandler.py, located in /input/ directory.
+Input handlers define the following methods:
+
+
+Output handlers to be of format toHandler.py, located in /output/ directory.
+Output handlers define the following methods:
