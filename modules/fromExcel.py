@@ -30,7 +30,7 @@ def getData(fileName):
         'protoNames': [],
         'fieldNames': [],
         'entries': [],
-        'variables': [],
+        'variables': {},
         'tags': {},
         'refColumns': [],
 
@@ -149,7 +149,7 @@ def createDBF(data):
     # subFunction definintions -------------------------------------------------
     def createTable(protoName, protoIndex, fieldStr):
         if fieldsStr != '':
-            dbfTable = dbf.Table(filename=protoName +
+            dbfTable = dbf.Table(filename='outputDBFs/'+protoName +
                                  '.dbf', field_specs=fieldsStr,)
             dbfTable.open(mode=dbf.READ_WRITE)
             # for
