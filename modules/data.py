@@ -7,7 +7,8 @@ def interpretData(data):
             prototypes[protoName] = {}
             prototypes[protoName]['fields'] = getFields(protoName)
             prototypes[protoName]['template'] = getTemplate(protoName)
-            prototypes[protoName]['variables'] = getVariables(protoName)
+            prototypes[protoName]['variables'] = getVariables(
+                prototypes[protoName]['template'])
             prototypes[protoName]['tags'] = getTags(protoName)
 
             # tests. Throw exception if coupled list lengths do not match
@@ -31,7 +32,7 @@ def interpretData(data):
                 values.append(data['protoFieldValues'][protoIndex][fieldIndex])
         return values
 
-    def getVariables(protoName):
+    def getVariables(template):
         protoIndex = data['protoNames'].index(protoName)
         values = []
         for fieldIndex in range(len(data['fieldNames'])):
@@ -47,6 +48,10 @@ def interpretData(data):
                 tags.append(tag)
 
         return tags
+
+    def extractVariable(inputString):
+        x = inputString
+        return x[x.find('##')+2: inputString.rfind('##')]
 
     # --------------------------------------------------------------------------
     populatePrototypes()
