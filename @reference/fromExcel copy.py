@@ -44,23 +44,6 @@ def getData(fileName):
                 data['fieldNames'].append(cell.value)
         print('Got FieldNames')
 
-    def populateProtoNames():
-        for colIndex in range(2, ws.max_column+1):
-            cell = ws[utils.get_column_letter(colIndex)+'2']
-            if cell.value != None:
-                data['protoNames'].append(cell.value)
-        print('Got ProtoNames')
-
-    def populateEntries():
-        for colIndex in range(2, ws.max_column+1):
-            rows = []
-            for rowIndex in range(3, ws.max_row+1):
-                cell = ws[utils.get_column_letter(colIndex)+str(rowIndex)]
-                rows.append(cell.value)
-            data['entries'].append(tuple(rows))
-        data['entries'] = tuple(data['entries'])
-        print('Got Entries')
-
     # def populateVariables():
     #     for colIndex in range(2, ws.max_column+1):
     #         rows = []

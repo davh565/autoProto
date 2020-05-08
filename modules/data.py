@@ -1,6 +1,5 @@
-def setInputSource():
-    pass
+def interpretData(dataIn):
 
 
-def setInputSource():
-    pass
+def packageData(data):
+    return data

@@ -1,4 +1,4 @@
-Root directory contains main .py file and config.py file. All other pythonfiles
+Root directory contains main .py file and config.py file. All other python files
 located in /input/, /output/ or /modules/ directories.
 
 Input handlers to be of format fromHandler.py, located in /input/ directory.
