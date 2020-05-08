@@ -4,16 +4,17 @@ import modules.utils as u
 
 if c.io['inputType'] == 'excel':
     import input.fromExcel as i
-    params = c.excel
+    cfgIn = c.excel
 else:
     raise Exception('no valid input source configured')
 
 if c.io['outputType'] == 'dbf':
     import output.toDBF as o
+    cfgOut = c.dbf
 else:
     raise Exception('no valid output format configured')
 
-dataRaw = i.getData(params)
-# print(dataRaw)
+dataRaw = i.getData(cfgIn)
 dataSet = d.interpretData(dataRaw)
-pass
+dataPackage = d.packageData(dataSet)
+# o.createTable(dataPackage, cfgOut)

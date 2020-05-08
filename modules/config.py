@@ -5,15 +5,13 @@ io = {
     'inputType': 'excel',
     'outputType': 'dbf',
 }
-
-# EXCEL
-############################
 excel = {
     'inputFile': 'IO_INSTRUMENT_LIST.xlsx',
     'sheetPrototypes': 'DEFAULTS',
     'sheetTags': 'TAG_REF',
     'tagKey': 'TAGNAME',
 }
+dbf = {}
 ################################################################################
 # UI
 ################################################################################
