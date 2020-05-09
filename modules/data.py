@@ -5,15 +5,17 @@ def interpretData(data):
         prototypes = {}
         for protoName in data['protoNames']:
             prototypes[protoName] = {}
-            prototypes[protoName]['fields'] = getFields(protoName)
-            prototypes[protoName]['template'] = getTemplate(protoName)
-            prototypes[protoName]['variables'] = getVariables(
-                prototypes[protoName]['template'])
-            prototypes[protoName]['tags'] = getTags(protoName)
+            p = prototypes[protoName]
+            p['fields'] = getFields(protoName)
+            p['template'] = getTemplate(protoName)
+            p['variableMask'] = getVariableMask(p['template'])
+            p['variableNames'] = getVariableNames(p['template'])
+            p['tags'] = getTags(protoName)
+            p['variableData'] = getVariableData(p['variableNames'], p['tags'])
 
             # tests. Throw exception if coupled list lengths do not match
-            assert len(prototypes[protoName]['fields']) == len(
-                prototypes[protoName]['template'])
+            assert len(p['fields']) == len(
+                p['template'])
 
     def getFields(protoName):
         protoIndex = data['protoNames'].index(protoName)
@@ -32,12 +34,22 @@ def interpretData(data):
                 values.append(data['protoFieldValues'][protoIndex][fieldIndex])
         return values
 
-    def getVariables(template):
-        protoIndex = data['protoNames'].index(protoName)
+    def getVariableMask(template):
         values = []
-        for fieldIndex in range(len(data['fieldNames'])):
-            if data['protoFieldValues'][protoIndex][fieldIndex] != None:
-                values.append(data['protoFieldValues'][protoIndex][fieldIndex])
+        for value in template:
+            e = extractVariable(str(value))
+            if e != str(value):
+                values.append(True)
+            else:
+                values.append(False)
+        return values
+
+    def getVariableNames(template):
+        values = []
+        for value in template:
+            e = extractVariable(str(value))
+            if e != str(value):
+                values.append(e)
         return values
 
     def getTags(protoName):
@@ -49,9 +61,20 @@ def interpretData(data):
 
         return tags
 
+    def getVariableData(variables, tags):
+        values = []
+        for value in variables:
+            e = extractVariable(str(value))
+            if e != str(value):
+                values.append(e)
+        return values
+
     def extractVariable(inputString):
         x = inputString
-        return x[x.find('##')+2: inputString.rfind('##')]
+        if '##' in inputString:
+            return x[x.find('##')+2: inputString.rfind('##')]
+        else:
+            return inputString
 
     # --------------------------------------------------------------------------
     populatePrototypes()

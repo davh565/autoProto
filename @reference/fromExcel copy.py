@@ -72,8 +72,8 @@ def getData(fileName):
 
     # --------------------------------------------------------------------------
     populateFieldNames()
-    populateProtoNames()
-    populateEntries()
+    # populateProtoNames()
+    # populateEntries()
 
     populateTags()
     populateRefColumns()
@@ -139,7 +139,7 @@ def createDBF(data):
             tableRow = tuple([str(e) for e in data['entries']
                               [protoIndex] if e != None])
             # dbfTable.append(tableRow)
-            for index, tag in enumerate(data['tags'][protoName]):
+            for index in enumerate(data['tags'][protoName]):
                 # print(index, tag)
                 updateVariableEntries(data, index)
                 dbfTable.append(tableRow)
