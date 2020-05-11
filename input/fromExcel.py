@@ -47,7 +47,7 @@ Getting Data:
         print('Got protoFieldValues')
 
     def populateDataNames():
-        for colIndex in range(2, ws2.max_column+1):
+        for colIndex in range(1, ws2.max_column+1):
             cell = ws2[utils.get_column_letter(colIndex)+'2']
             if cell.value != None:
                 data['dataNames'].append(cell.value)
@@ -61,7 +61,7 @@ Getting Data:
         print('Got tagNames')
 
     def populateTagDataValues():
-        for colIndex in range(2, ws2.max_column+1):
+        for colIndex in range(1, ws2.max_column+1):
             rows = []
             for rowIndex in range(3, ws2.max_row+1):
                 cell = ws2[utils.get_column_letter(colIndex)+str(rowIndex)]

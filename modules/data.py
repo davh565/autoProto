@@ -1,7 +1,10 @@
+varErrorStr = '##ERROR: Variable Not Found##'
+
+
 def interpretData(data):
     # subFunction definintions -------------------------------------------------
 
-    def populatePrototypes():
+    def populatePrototypeData(data):
         prototypes = {}
         for protoName in data['protoNames']:
             prototypes[protoName] = {}
@@ -12,6 +15,18 @@ def interpretData(data):
             p['variableNames'] = getVariableNames(p['template'])
             p['tags'] = getTags(protoName)
             p['variableData'] = getVariableData(p['variableNames'], p['tags'])
+            p['rows'] = getRows(
+                p['fields'],
+                p['template'],
+                p['variableMask'],
+                p['variableNames'],
+                p['tags'],
+                p['variableData'])
+            # fields: {
+            #     names : [],
+            #     templateValues : []
+            # }
+            # variavles
 
             # tests. Throw exception if coupled list lengths do not match
             assert len(p['fields']) == len(
@@ -62,12 +77,35 @@ def interpretData(data):
         return tags
 
     def getVariableData(variables, tags):
-        values = []
-        for value in variables:
-            e = extractVariable(str(value))
-            if e != str(value):
-                values.append(e)
-        return values
+        variableData = {}
+        for variable in variables:
+            if variable in data['dataNames']:
+                varIndex = data['dataNames'].index(variable)
+                variableData[variable] = []
+                for tag in tags:
+                    tagLookup = data['tagNames'].index(tag)
+                    datum = data['tagDataValues'][varIndex][tagLookup]
+                    variableData[variable].append(datum)
+        return variableData
+
+    def getRows(
+            fields, template, variableMask, variableNames, tags, variableData):
+        rows = []
+        for tagIndex, tag in enumerate(tags):
+            variableIndex = 0
+            cols = []
+            for fieldIndex, field in enumerate(fields):
+                if variableMask[fieldIndex]:
+                    variable = variableNames[variableIndex]
+                    if variable in data['dataNames']:
+                        cols.append(variableData[variable][tagIndex])
+                        variableIndex += 1
+                    else:
+                        cols.append(varErrorStr)
+                else:
+                    cols.append(template[fieldIndex])
+            rows.append(cols)
+        return rows
 
     def extractVariable(inputString):
         x = inputString
@@ -77,7 +115,8 @@ def interpretData(data):
             return inputString
 
     # --------------------------------------------------------------------------
-    populatePrototypes()
+    populatePrototypeData(data)
+
     return data
 
 
