@@ -1,5 +1,6 @@
 import dbf
 
+
 def createTables(dataIn, cfg):
     # subFunction definintions -------------------------------------------------
 
@@ -13,10 +14,10 @@ def createTables(dataIn, cfg):
             else:
                 outputDataSet[prototype]['fieldString'] = None
         return outputDataSet
-    
+
     def makeDBF(data):
         if data['fieldString']:
-            dbfTable = dbf.Table(filename=data['name'] +
+            dbfTable = dbf.Table(filename='output/'+data['name'] +
                                  '.dbf', field_specs=data['fieldString'],)
             dbfTable.open(mode=dbf.READ_WRITE)
             for row in data['rows']:
@@ -26,11 +27,11 @@ def createTables(dataIn, cfg):
         else:
             print(data['name'] + " is empty, no file created")
         pass
-        
+
     # --------------------------------------------------------------------------
 
     dataPackage = addFieldString(dataIn)
     for prototype in dataPackage:
-        protoData =dataPackage[prototype]
+        protoData = dataPackage[prototype]
         makeDBF(protoData)
     print('DBFs created')
