@@ -4,7 +4,7 @@ import dbf
 
 testRange = 6
 file = 'IO_INSTRUMENT_LIST.xlsx'
-sheet = 'PROTOTYPES'
+sheet = 'DEFAULTS'
 divider = '____________________________________________________________________'
 
 

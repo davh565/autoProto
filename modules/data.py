@@ -2,13 +2,14 @@ varErrorStr = '##ERROR: Variable Not Found##'
 
 
 def interpretData(data):
+    prototypes = {}
     # subFunction definintions -------------------------------------------------
 
     def populatePrototypeData(data):
-        prototypes = {}
         for protoName in data['protoNames']:
             prototypes[protoName] = {}
             p = prototypes[protoName]
+            p['name'] = protoName
             p['fields'] = getFields(protoName)
             p['template'] = getTemplate(protoName)
             p['variableMask'] = getVariableMask(p['template'])
@@ -22,15 +23,6 @@ def interpretData(data):
                 p['variableNames'],
                 p['tags'],
                 p['variableData'])
-            # fields: {
-            #     names : [],
-            #     templateValues : []
-            # }
-            # variavles
-
-            # tests. Throw exception if coupled list lengths do not match
-            assert len(p['fields']) == len(
-                p['template'])
 
     def getFields(protoName):
         protoIndex = data['protoNames'].index(protoName)
@@ -98,12 +90,12 @@ def interpretData(data):
                 if variableMask[fieldIndex]:
                     variable = variableNames[variableIndex]
                     if variable in data['dataNames']:
-                        cols.append(variableData[variable][tagIndex])
+                        cols.append(str(variableData[variable][tagIndex]))
                         variableIndex += 1
                     else:
                         cols.append(varErrorStr)
                 else:
-                    cols.append(template[fieldIndex])
+                    cols.append(str(template[fieldIndex]))
             rows.append(cols)
         return rows
 
@@ -113,12 +105,19 @@ def interpretData(data):
             return x[x.find('##')+2: inputString.rfind('##')]
         else:
             return inputString
+    
+    def packageProtoData(protoData):
+        packagedData = {}
+        for proto in protoData:
+            packagedData[proto] = {}
+            packagedData[proto]['name'] = protoData[proto]['name']
+            packagedData[proto]['fields'] = protoData[proto]['fields']
+            packagedData[proto]['rows'] = protoData[proto]['rows']
+        return packagedData
 
     # --------------------------------------------------------------------------
     populatePrototypeData(data)
 
-    return data
+    return packageProtoData(prototypes)
 
 
-def packageData(data):
-    return data

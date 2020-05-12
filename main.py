@@ -16,5 +16,4 @@ else:
 
 dataRaw = i.getData(cfgIn)
 dataSet = d.interpretData(dataRaw)
-dataPackage = d.packageData(dataSet)
-# o.createTable(dataPackage, cfgOut)
+o.createTables(dataSet, cfgOut)
