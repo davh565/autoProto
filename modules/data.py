@@ -95,7 +95,10 @@ def interpretData(data):
                     else:
                         cols.append(varErrorStr)
                 else:
-                    cols.append(str(template[fieldIndex]))
+                    if template[fieldIndex] is None:
+                        cols.append(None)
+                    else:
+                        cols.append(str(template[fieldIndex]))
             rows.append(cols)
         return rows
 
