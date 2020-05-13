@@ -1,4 +1,4 @@
-import modules.config as c
+import config as c
 import modules.data as d
 import modules.utils as u
 

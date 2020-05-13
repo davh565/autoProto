@@ -1,4 +1,4 @@
-varErrorStr = '##ERROR: Variable Not Found##'
+varErrorStr = '<ERROR: Variable Not Found>'
 
 
 def interpretData(data):

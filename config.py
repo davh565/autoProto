@@ -7,9 +7,13 @@ io = {
 }
 excel = {
     'inputFile': 'IO_INSTRUMENT_LIST.xlsx',
-    'sheetPrototypes': 'DEFAULTS',
-    'sheetTags': 'TAG_REF',
-    'tagKey': 'TAGNAME',
+    'sheetPrototypes': 'PROTOTYPE_FIELDS',
+    'sheetProtoStartCol': 2,
+    'sheetFieldStartRow': 3,
+    
+    'sheetTags': 'TAG_DATA',
+    'sheetDataStartCol': 1,
+    'sheetTagStartRow': 3,
 }
 dbf = {}
 ################################################################################
