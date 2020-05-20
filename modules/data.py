@@ -63,7 +63,7 @@ def interpretData(data):
         protoDataIndex = data['dataNames'].index('ProtoName')
         tags = []
         for tagIndex, tag in enumerate(data['tagNames']):
-            if data['tagDataValues'][protoDataIndex][tagIndex] == protoName:
+            if protoName in str(data['tagDataValues'][protoDataIndex][tagIndex]):
                 tags.append(tag)
 
         return tags
@@ -108,7 +108,7 @@ def interpretData(data):
             return x[x.find('##')+2: inputString.rfind('##')]
         else:
             return inputString
-    
+
     def packageProtoData(protoData):
         packagedData = {}
         for proto in protoData:
@@ -122,5 +122,4 @@ def interpretData(data):
     populatePrototypeData(data)
 
     return packageProtoData(prototypes)
-
 
