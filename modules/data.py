@@ -77,7 +77,10 @@ def interpretData(data):
                 for tag in tags:
                     tagLookup = data['tagNames'].index(tag)
                     datum = data['tagDataValues'][varIndex][tagLookup]
-                    variableData[variable].append(datum)
+                    if datum == None:
+                        variableData[variable].append("")
+                    else:
+                        variableData[variable].append(datum)
         return variableData
 
     def getRows(
